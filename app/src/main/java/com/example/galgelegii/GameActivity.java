@@ -1,39 +1,61 @@
 package com.example.galgelegii;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView imageView;
-    Galgelogik galgelogik;
-    Button button;
-    TextView ord;
-    TextView brugteBogstaver;
-    EditText bogstavGæt;
+    private ImageView imageView;
+    private Galgelogik galgelogik;
+    private Button button;
+    private TextView ord;
+    private TextView brugteBogstaver;
+    private EditText bogstavGæt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        galgelogik = new Galgelogik();
-
+        galgelogik = Galgelogik.getInstans();
         ord = findViewById(R.id.valgtOrd);
-
-        ord.setText(galgelogik.getSynligtOrd());
-
-
         button = findViewById(R.id.button);
-
         button.setOnClickListener(this);
 
+        Executor bgThread = Executors.newSingleThreadExecutor(); // en baggrundstråd
+        Handler uiThread = new Handler(Looper.getMainLooper());  // forgrundstråden
+
+        bgThread.execute(() -> {
+            try {
+                galgelogik.getOrd("regneark").hentOrd(galgelogik.muligeOrd);
+                galgelogik.startNytSpil();
+
+                uiThread.post(() -> {
+                    ord.setText(galgelogik.getSynligtOrd());
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                uiThread.post(() -> {
+                    ord.setText("Fejl ved hentningen af ord");
+                });
+            }
+        });
     }
 
     @Override
@@ -41,6 +63,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         imageView = findViewById(R.id.imageView);
         bogstavGæt = findViewById(R.id.bogstav);
+
         galgelogik.gætBogstav(bogstavGæt.getText().toString().toLowerCase());
 
         if(bogstavGæt.getText().toString().equalsIgnoreCase(galgelogik.getOrdet())) {
@@ -52,6 +75,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         brugteBogstaver = findViewById(R.id.brugteBogstaver);
         brugteBogstaver.setText(galgelogik.getBrugteBogstaver().toString());
 
+        bogstavGæt.getText().clear();
 
         switch (galgelogik.getAntalForkerteBogstaver()) {
             case 1:
@@ -75,15 +99,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         if(galgelogik.erSpilletVundet()) gameOver(true);
         if(galgelogik.erSpilletTabt()) gameOver(false);
-
-/*
-        for (int i = 0; i < galgelogik.getBrugteBogstaver().size(); i++) {
-            brugteBogstaver.setText(galgelogik.getBrugteBogstaver().get(i));
-        }
-
- */
-
-      //  imageView.setImageResource(R.drawable.forkert1);
     }
 
     public void gameOver(boolean gameStatus) {

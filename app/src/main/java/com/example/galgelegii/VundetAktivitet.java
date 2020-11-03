@@ -27,6 +27,7 @@ public class VundetAktivitet extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-
+        Intent i = new Intent(this, GameActivity.class);
+        startActivity(i);
     }
 }

@@ -2,14 +2,16 @@ package com.example.galgelegii;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         Button startBtn = findViewById(R.id.startBtn);
-        Button testBtn = findViewById(R.id.testBtn);
+      //  Button testBtn = findViewById(R.id.testBtn);
 
         startBtn.setOnClickListener(this);
-        testBtn.setOnClickListener(this);
+       // testBtn.setOnClickListener(this);
     }
 
     @Override
@@ -29,11 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i = new Intent(this, GameActivity.class);
         startActivity(i);
 
+        /*
         if (view == findViewById(R.id.testBtn)) {
             Intent test = new Intent(this, VundetAktivitet.class);
             startActivity(test);
         }
 
-
+         */
     }
 }
