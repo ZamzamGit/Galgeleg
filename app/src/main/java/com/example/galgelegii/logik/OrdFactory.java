@@ -1,4 +1,4 @@
-package com.example.galgelegii;
+package com.example.galgelegii.logik;
 
 public class OrdFactory {
 

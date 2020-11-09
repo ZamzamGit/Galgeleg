@@ -1,4 +1,5 @@
-package com.example.galgelegii;
+package com.example.galgelegii.logik;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,21 +1,19 @@
 package com.example.galgelegii;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.galgelegii.logik.Galgelogik;
+import com.example.galgelegii.logik.OrdFactory;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -37,6 +35,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         ord = findViewById(R.id.valgtOrd);
         button = findViewById(R.id.button);
         button.setOnClickListener(this);
+
 
         Executor bgThread = Executors.newSingleThreadExecutor(); // en baggrundstråd
         Handler uiThread = new Handler(Looper.getMainLooper());  // forgrundstråden

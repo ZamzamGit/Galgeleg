@@ -1,4 +1,4 @@
-package com.example.galgelegii;
+package com.example.galgelegii.logik;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -6,7 +6,7 @@ public class Galgelogik {
     /**
      * AHT afprøvning er muligeOrd synlig på pakkeniveau
      */
-    ArrayList<String> muligeOrd = new ArrayList<String>();
+    public ArrayList<String> muligeOrd = new ArrayList<String>();
     private String ordet;
     private ArrayList<String> brugteBogstaver = new ArrayList<String>();
     private String synligtOrd;

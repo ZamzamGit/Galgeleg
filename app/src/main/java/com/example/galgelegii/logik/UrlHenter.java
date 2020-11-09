@@ -1,4 +1,4 @@
-package com.example.galgelegii;
+package com.example.galgelegii.logik;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
