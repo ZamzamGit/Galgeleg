@@ -43,7 +43,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         bgThread.execute(() -> {
             try {
-                galgelogik.getOrd("regneark").hentOrd(galgelogik.muligeOrd);
+                OrdFactory.getInstance().getOrd("regneark").hentOrd(galgelogik.muligeOrd);
                 galgelogik.startNytSpil();
 
                 uiThread.post(() -> {
