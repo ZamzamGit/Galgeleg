@@ -1,14 +1,11 @@
 package com.example.galgelegii;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,11 +18,9 @@ import java.util.concurrent.Executors;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView imageView;
-    private Galgelogik galgelogik;
-    private Button button;
+    private Galgelogik galgelogik;;
     private TextView ord;
-    private TextView brugteBogstaver;
-    private EditText bogstavGæt;
+    private Button[] buttons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +28,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_game);
         galgelogik = Galgelogik.getInstans();
         ord = findViewById(R.id.valgtOrd);
-        button = findViewById(R.id.button);
-        button.setOnClickListener(this);
+        imageView = findViewById(R.id.imageView);
+        buttons = new Button[29];
 
+        for (int i = 0; i < buttons.length ; i++) {
+            String buttonId = "button" + (i+1);
+            int resId = getResources().getIdentifier(buttonId, "id", getPackageName());
+            buttons[i] = findViewById(resId);
+            buttons[i].setOnClickListener(this);
+        }
 
         Executor bgThread = Executors.newSingleThreadExecutor(); // en baggrundstråd
         Handler uiThread = new Handler(Looper.getMainLooper());  // forgrundstråden
@@ -60,21 +61,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        imageView = findViewById(R.id.imageView);
-        bogstavGæt = findViewById(R.id.bogstav);
+        for (int i = 0; i < buttons.length ; i++) {
+            if(view.getId() == buttons[i].getId()) {
+                galgelogik.gætBogstav(buttons[i].getText().toString());
+                buttons[i].setVisibility(View.INVISIBLE);
 
-        galgelogik.gætBogstav(bogstavGæt.getText().toString().toLowerCase());
-
-        if(bogstavGæt.getText().toString().equalsIgnoreCase(galgelogik.getOrdet())) {
-            ord.setText(galgelogik.getOrdet());
-            gameOver(true);
+            }
         }
-
         ord.setText(galgelogik.getSynligtOrd());
-        brugteBogstaver = findViewById(R.id.brugteBogstaver);
-        brugteBogstaver.setText(galgelogik.getBrugteBogstaver().toString());
-
-        bogstavGæt.getText().clear();
 
         switch (galgelogik.getAntalForkerteBogstaver()) {
             case 1:
