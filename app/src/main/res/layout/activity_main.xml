@@ -6,7 +6,6 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/galgeTxt"
         android:layout_width="wrap_content"

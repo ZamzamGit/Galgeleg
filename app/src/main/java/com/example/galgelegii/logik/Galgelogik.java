@@ -17,6 +17,7 @@ public class Galgelogik {
     private static Galgelogik instans = new Galgelogik();
 
     private Galgelogik() {
+
         muligeOrd.add("bil");
         muligeOrd.add("computer");
         muligeOrd.add("programmering");
@@ -26,6 +27,7 @@ public class Galgelogik {
         muligeOrd.add("skovsnegl");
         muligeOrd.add("solsort");
         muligeOrd.add("tyve");
+
         startNytSpil();
     }
 

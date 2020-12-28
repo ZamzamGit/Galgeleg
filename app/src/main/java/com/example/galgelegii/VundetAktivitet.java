@@ -3,6 +3,7 @@ package com.example.galgelegii;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +16,15 @@ public class VundetAktivitet extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vundet_aktivitet);
 
+        MediaPlayer mp = MediaPlayer.create(VundetAktivitet.this, R.raw.win);
         TextView forsøgDisplay = findViewById(R.id.forsoegDisplay);
         Intent i = getIntent();
 
         String antal = i.getStringExtra("forsøg");
         forsøgDisplay.setText("Antal forsøg: " + antal);
 
+        mp.setVolume(1,1);
+        mp.start();
         Button spilIgen = findViewById(R.id.spilIgen2);
         spilIgen.setOnClickListener(this);
     }
@@ -29,5 +33,13 @@ public class VundetAktivitet extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         Intent i = new Intent(this, GameActivity.class);
         startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        super.onBackPressed();
     }
 }
