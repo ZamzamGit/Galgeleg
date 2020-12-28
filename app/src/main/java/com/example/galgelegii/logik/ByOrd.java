@@ -8,14 +8,14 @@ public class ByOrd implements Ord {
     @Override
     public void hentOrd(ArrayList<String> muligeOrd) throws IOException {
         muligeOrd.clear();
-        muligeOrd.add("Paris");
-        muligeOrd.add("København");
-        muligeOrd.add("Beirut");
-        muligeOrd.add("Barcelona");
-        muligeOrd.add("Istanbul");
-        muligeOrd.add("Berlin");
-        muligeOrd.add("Oslo");
-        muligeOrd.add("Prag");
+        muligeOrd.add("paris");
+        muligeOrd.add("københavn");
+        muligeOrd.add("beirut");
+        muligeOrd.add("barcelona");
+        muligeOrd.add("istanbul");
+        muligeOrd.add("berlin");
+        muligeOrd.add("oslo");
+        muligeOrd.add("prag");
         System.out.println("muligeOrd = " + muligeOrd);
     }
 }

@@ -38,12 +38,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             buttons[i].setOnClickListener(this);
         }
 
+
+        String kategori;
+        Intent intent = getIntent();
+
+        kategori = intent.getStringExtra("kategori").toLowerCase();
+
         Executor bgThread = Executors.newSingleThreadExecutor(); // en baggrundstråd
         Handler uiThread = new Handler(Looper.getMainLooper());  // forgrundstråden
 
         bgThread.execute(() -> {
             try {
-                OrdFactory.getInstance().getOrd("lande").hentOrd(galgelogik.muligeOrd);
+                OrdFactory.getInstance().getOrd(kategori).hentOrd(galgelogik.muligeOrd);
                 galgelogik.startNytSpil();
 
                 uiThread.post(() -> {

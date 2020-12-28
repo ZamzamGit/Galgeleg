@@ -8,14 +8,14 @@ public class DyrOrd implements Ord {
     @Override
     public void hentOrd(ArrayList<String> muligeOrd) throws IOException {
         muligeOrd.clear();
-        muligeOrd.add("Gorilla");
-        muligeOrd.add("Hund");
-        muligeOrd.add("Løve");
-        muligeOrd.add("Kænguru");
-        muligeOrd.add("Næsehorn");
-        muligeOrd.add("Tiger");
-        muligeOrd.add("Pingvin");
-        muligeOrd.add("Isbjørn");
+        muligeOrd.add("gorilla");
+        muligeOrd.add("hund");
+        muligeOrd.add("løve");
+        muligeOrd.add("kænguru");
+        muligeOrd.add("næsehorn");
+        muligeOrd.add("tiger");
+        muligeOrd.add("pingvin");
+        muligeOrd.add("isbjørn");
         System.out.println("muligeOrd = " + muligeOrd);
     }
 }
