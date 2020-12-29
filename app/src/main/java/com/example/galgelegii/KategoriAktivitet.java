@@ -23,20 +23,18 @@ public class KategoriAktivitet extends AppCompatActivity implements AdapterView.
 
         listView = findViewById(R.id.kategoriList);
 
-        ArrayList<String> city = new ArrayList<>();
+        ArrayList<String> kategorier = new ArrayList<>();
+        kategorier.add("Byer");
+        kategorier.add("Lande");
+        kategorier.add("Brands");
+        kategorier.add("Mad");
+        kategorier.add("Dyr");
+        kategorier.add("Ord fra DR");
+        kategorier.add("Ord fra Regneark");
 
-        city.add("Byer");
-        city.add("Lande");
-        city.add("Brands");
-        city.add("Mad");
-        city.add("Dyr");
-        city.add("Ord fra DR");
-        city.add("Ord fra Regneark");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.row, city);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.row, kategorier);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-
     }
 
     @Override

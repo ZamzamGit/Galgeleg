@@ -112,4 +112,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(looseActivity);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        GameDialog dialog = new GameDialog();
+        dialog.show(getSupportFragmentManager(), "game dialog");
+        super.onBackPressed();
+    }
 }

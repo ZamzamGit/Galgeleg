@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class BrandOrd implements Ord{
 
-
     @Override
     public void hentOrd(ArrayList<String> muligeOrd) throws IOException {
         muligeOrd.clear();
