@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.galgelegii.logik.Galgelogik;
+import com.example.galgelegii.logik.HighScore;
+import com.example.galgelegii.logik.HighScoreData;
 import com.example.galgelegii.logik.OrdFactory;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -20,6 +24,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView imageView;
     private Galgelogik galgelogik;;
     private TextView ord;
+    private int score;
     private Button[] buttons;
 
     @Override
@@ -71,7 +76,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if(view.getId() == buttons[i].getId()) {
                 galgelogik.gætBogstav(buttons[i].getText().toString());
                 buttons[i].setVisibility(View.INVISIBLE);
-
             }
         }
         ord.setText(galgelogik.getSynligtOrd());
@@ -103,6 +107,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void gameOver(boolean gameStatus) {
 
         if(gameStatus) {
+
+            LocalDateTime localDate = LocalDateTime.now();
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String time = localDate.format(myFormatObj);
+            score = gameScore();
+            HighScore high = new HighScore(galgelogik.getOrdet(), score, time);
+            HighScoreData.getInstance().saveData(high, this);
+
             Intent winActivity = new Intent(this, VundetAktivitet.class);
             winActivity.putExtra("forsøg", Integer.toString(galgelogik.getAntalForkerteBogstaver()));
             startActivity(winActivity);
@@ -113,10 +125,30 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private int gameScore() {
+        int score = 0;
+        switch (galgelogik.getAntalForkerteBogstaver()) {
+            case 0: score = 100;
+            break;
+            case 1: score = 80;
+                break;
+            case 2: score = 60;
+                break;
+            case 3: score = 40;
+                break;
+            case 4: score = 20;
+                break;
+            case 5: score = 10;
+            break;
+            case 6: score = 5;
+                break;
+        }
+        return score;
+    }
+
     @Override
     public void onBackPressed() {
         GameDialog dialog = new GameDialog();
         dialog.show(getSupportFragmentManager(), "game dialog");
-        super.onBackPressed();
     }
 }

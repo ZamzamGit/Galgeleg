@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
@@ -19,17 +20,17 @@ public class GameDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Besked")
                 .setMessage("Er du sikker på at du vil forlade nuværende spil?")
-                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Nej", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                      // do nothing
+                    }
+                })
+                .setNegativeButton("Ja", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
-                    }
-                })
-                .setNegativeButton("Nej", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // do nothing
                     }
                 });
         return builder.create();

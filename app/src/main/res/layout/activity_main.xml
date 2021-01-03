@@ -6,6 +6,19 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/highScoreBtn"
+        android:layout_width="165dp"
+        android:layout_height="42dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="High Score"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startBtn"
+        app:layout_constraintVertical_bias="0.329" />
+
     <TextView
         android:id="@+id/galgeTxt"
         android:layout_width="wrap_content"
@@ -35,7 +48,7 @@
         android:id="@+id/startBtn"
         android:layout_width="165dp"
         android:layout_height="42dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="80dp"
         android:background="@android:color/holo_red_dark"
         android:text="Start spil"
         android:textColor="@color/white"

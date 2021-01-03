@@ -15,19 +15,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         Button startBtn = findViewById(R.id.startBtn);
+        Button highScoreBtn = findViewById(R.id.highScoreBtn);
         startBtn.setOnClickListener(this);
+        highScoreBtn.setOnClickListener(this);
+
 
     }
 
     @Override
     public void onClick(View view) {
 
-        Intent i = new Intent(this, KategoriAktivitet.class);
+        Intent i;
+
+        if (view == findViewById(R.id.highScoreBtn)) {
+            i = new Intent(this, HighScoreActivity.class);
+        } else {
+            i = new Intent(this, KategoriAktivitet.class);
+        }
         startActivity(i);
+
         /*
         Intent i = new Intent(this, GameActivity.class);
         startActivity(i);
 
          */
+    }
+    @Override
+    public void onBackPressed() {
     }
 }

@@ -37,7 +37,6 @@ public class VundetAktivitet extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onBackPressed() {
-
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         super.onBackPressed();

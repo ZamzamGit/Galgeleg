@@ -44,4 +44,11 @@ public class KategoriAktivitet extends AppCompatActivity implements AdapterView.
         spil.putExtra("kategori", kategori);
         startActivity(spil);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        super.onBackPressed();
+    }
 }
