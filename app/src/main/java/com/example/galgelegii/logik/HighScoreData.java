@@ -38,15 +38,30 @@ public class HighScoreData {
 
     public void saveData(HighScore score, Context context) {
 
-
+        HighScore s = findScore(score.getWord());
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        Gson gson = new Gson();
-        highScores.add(score);
-        String json = gson.toJson(highScores);
-        sharedPref.edit().putString("highscore", json).apply();
+
+        if(s != null) {
+            s.setScore(score.getScore());
+            s.setTime(score.getTime());
+        } else {
+            Gson gson = new Gson();
+            highScores.add(score);
+            String json = gson.toJson(highScores);
+            sharedPref.edit().putString("highscore", json).apply();
+        }
     }
 
     public ArrayList<HighScore> getHighScores() {
         return highScores;
+    }
+
+    public HighScore findScore(String word) {
+        for (HighScore score : highScores) {
+            if(score.getWord().equals(word)) {
+                return score;
+            }
+        }
+        return null;
     }
 }
