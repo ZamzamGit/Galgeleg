@@ -45,11 +45,11 @@ public class HighScoreData {
             s.setScore(score.getScore());
             s.setTime(score.getTime());
         } else {
-            Gson gson = new Gson();
             highScores.add(score);
-            String json = gson.toJson(highScores);
-            sharedPref.edit().putString("highscore", json).apply();
         }
+        Gson gson = new Gson();
+        String json = gson.toJson(highScores);
+        sharedPref.edit().putString("highscore", json).apply();
     }
 
     public ArrayList<HighScore> getHighScores() {
