@@ -1,14 +1,10 @@
 package com.example.galgelegii;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.galgelegii.logik.Galgelogik;
 import com.example.galgelegii.logik.HighScore;
 
 import java.util.ArrayList;
@@ -17,7 +13,6 @@ public class HighScoreAdapter extends RecyclerView.Adapter<HighScoreAdapter.View
 
 
     private ArrayList<HighScore> scores;
-
 
     public HighScoreAdapter(ArrayList<HighScore> scores) {
         this.scores = scores;
@@ -36,7 +31,7 @@ public class HighScoreAdapter extends RecyclerView.Adapter<HighScoreAdapter.View
         HighScore highScore = scores.get(position);
         holder.word.setText("Ord: " + highScore.getWord());
         holder.score.setText("Score: " + highScore.getScore());
-        holder.time.setText("Tidspunkt " + highScore.getTime());
+        holder.time.setText("Tidspunkt: " + highScore.getTime());
 
     }
 

@@ -12,10 +12,8 @@ import com.example.galgelegii.logik.Galgelogik;
 import com.example.galgelegii.logik.HighScore;
 import com.example.galgelegii.logik.HighScoreData;
 import com.example.galgelegii.logik.OrdFactory;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -42,7 +40,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             buttons[i] = findViewById(resId);
             buttons[i].setOnClickListener(this);
         }
-
 
         String kategori;
         Intent intent = getIntent();

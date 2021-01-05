@@ -23,15 +23,23 @@ public class VundetAktivitet extends AppCompatActivity implements View.OnClickLi
         String antal = i.getStringExtra("forsøg");
         forsøgDisplay.setText("Antal forsøg: " + antal);
 
-        mp.setVolume(1,1);
+        mp.setVolume(2,2);
         mp.start();
         Button spilIgen = findViewById(R.id.spilIgen2);
+        Button menu = findViewById(R.id.menuBtn2);
         spilIgen.setOnClickListener(this);
+        menu.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(this, KategoriAktivitet.class);
+        Intent i;
+
+        if(view == findViewById(R.id.spilIgen2)) {
+            i = new Intent(this, KategoriAktivitet.class);
+        } else {
+            i = new Intent(this, MainActivity.class);
+        }
         startActivity(i);
     }
 

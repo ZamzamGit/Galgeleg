@@ -16,22 +16,20 @@ public class HighScoreActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ArrayList<HighScore> scores;
+    private HighScoreAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
 
-
-
         HighScoreData data = HighScoreData.getInstance();
-        scores = data.getHighScores();
-        data.readData(this);
-
         recyclerView = findViewById(R.id.highScoreRecView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new HighScoreAdapter(scores));
+        scores = data.readData(this);
+        adapter = new HighScoreAdapter(scores);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

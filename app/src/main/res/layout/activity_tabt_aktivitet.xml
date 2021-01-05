@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".TabtAktivitet">
 
+    <Button
+        android:id="@+id/menuBtn"
+        android:layout_width="120dp"
+        android:layout_height="44dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="menu"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spilIgen"
+        app:layout_constraintVertical_bias="0.259" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -24,10 +38,10 @@
         android:id="@+id/ordDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="96dp"
         android:text="Ordet var: "
-        android:textSize="20dp"
         android:textColor="@android:color/holo_red_dark"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,12 +51,12 @@
         android:id="@+id/spilIgen"
         android:layout_width="120dp"
         android:layout_height="44dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="144dp"
         android:background="@android:color/holo_red_dark"
         android:text="Spil Igen"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ordDisplay" />
 </androidx.constraintlayout.widget.ConstraintLayout>

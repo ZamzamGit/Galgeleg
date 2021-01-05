@@ -25,15 +25,24 @@ public class TabtAktivitet extends AppCompatActivity implements View.OnClickList
         String ord = i.getStringExtra("ord");
         ordDisplay.setText("Ordet var " + ord);
 
-        mp.setVolume(1,1);
+        mp.setVolume(2,2);
         mp.start();
         Button spilIgen = findViewById(R.id.spilIgen);
+        Button menu = findViewById(R.id.menuBtn);
         spilIgen.setOnClickListener(this);
+        menu.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(this, KategoriAktivitet.class);
+
+        Intent i;
+
+        if(view == findViewById(R.id.spilIgen)) {
+             i = new Intent(this, KategoriAktivitet.class);
+        } else {
+             i = new Intent(this, MainActivity.class);
+        }
         startActivity(i);
     }
 

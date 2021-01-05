@@ -10,6 +10,7 @@ public class OrdFactory {
     private static final Map<String, Ord> ordKategori = new HashMap<>();
 
     static {
+        // kategorier en bruger kan vælge imellem
         ordKategori.put("ord fra dr", new DrOrd());
         ordKategori.put("ord fra regneark", new RegnearkOrd());
         ordKategori.put("lande", new LandeOrd());

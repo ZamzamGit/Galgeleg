@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".VundetAktivitet">
 
+    <Button
+        android:id="@+id/menuBtn2"
+        android:layout_width="127dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="72dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="menu"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -53,11 +66,11 @@
         android:id="@+id/spilIgen2"
         android:layout_width="127dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginBottom="36dp"
         android:background="@android:color/holo_red_dark"
         android:text="Spil Igen"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/menuBtn2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent" />
