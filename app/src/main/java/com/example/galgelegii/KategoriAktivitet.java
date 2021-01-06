@@ -23,6 +23,7 @@ public class KategoriAktivitet extends AppCompatActivity implements AdapterView.
 
         listView = findViewById(R.id.kategoriList);
 
+        // kategorier i listen
         ArrayList<String> kategorier = new ArrayList<>();
         kategorier.add("Byer");
         kategorier.add("Lande");
@@ -39,6 +40,7 @@ public class KategoriAktivitet extends AppCompatActivity implements AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        // Navnet på kategorien der trykkes på, bliver lagt i en String, som skal hentes i GameActivity
         String kategori = adapterView.getItemAtPosition(i).toString();
         Intent spil = new Intent(this, GameActivity.class);
         spil.putExtra("kategori", kategori);

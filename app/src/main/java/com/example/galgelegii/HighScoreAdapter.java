@@ -21,6 +21,7 @@ public class HighScoreAdapter extends RecyclerView.Adapter<HighScoreAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // layout for RecyclerView vælges. Hvert element i RecyclerView er en CardView
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_highscore, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
@@ -28,6 +29,7 @@ public class HighScoreAdapter extends RecyclerView.Adapter<HighScoreAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // her hentes et highscore objekt fra arraylisten, hvor dens data vil blive sat i TextViews i dens CardView
         HighScore highScore = scores.get(position);
         holder.word.setText("Ord: " + highScore.getWord());
         holder.score.setText("Score: " + highScore.getScore());

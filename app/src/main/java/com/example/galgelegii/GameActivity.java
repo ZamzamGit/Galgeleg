@@ -1,6 +1,8 @@
 package com.example.galgelegii;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -34,6 +36,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         imageView = findViewById(R.id.imageView);
         buttons = new Button[29];
 
+        // initialiserer alle buttons
         for (int i = 0; i < buttons.length ; i++) {
             String buttonId = "button" + (i+1);
             int resId = getResources().getIdentifier(buttonId, "id", getPackageName());
@@ -44,6 +47,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         String kategori;
         Intent intent = getIntent();
 
+        // kategorien som brugeren vælger fra listen
         kategori = intent.getStringExtra("kategori").toLowerCase();
 
         Executor bgThread = Executors.newSingleThreadExecutor(); // en baggrundstråd
@@ -51,7 +55,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         bgThread.execute(() -> {
             try {
-                OrdFactory.getInstance().getOrd(kategori).hentOrd(galgelogik.muligeOrd);
+                // henter ord fra den bestemte kategori
+                OrdFactory.getInstance().getKategori(kategori).hentOrd(galgelogik.muligeOrd);
                 galgelogik.startNytSpil();
 
                 uiThread.post(() -> {
@@ -69,6 +74,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
+        // der gættes på et bogstav, som forsvinder efter der er blevet trykket på den
         for (int i = 0; i < buttons.length ; i++) {
             if(view.getId() == buttons[i].getId()) {
                 galgelogik.gætBogstav(buttons[i].getText().toString());
@@ -77,6 +83,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         ord.setText(galgelogik.getSynligtOrd());
 
+        // skifter galgebillede for hvert forkert svar
         switch (galgelogik.getAntalForkerteBogstaver()) {
             case 1:
                 imageView.setImageResource(R.drawable.forkert1);
@@ -105,13 +112,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         if(gameStatus) {
 
+            // henter dato og tidspunkt
             LocalDateTime localDate = LocalDateTime.now();
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
             String time = localDate.format(myFormatObj);
+
+            // henter score
             score = gameScore();
+
+            // der oprettes et objekt af highscore som bliver gemt
             HighScore high = new HighScore(galgelogik.getOrdet(), score, time);
             HighScoreData.getInstance().saveData(high, this);
 
+            // skifter til ny aktivitet
             Intent winActivity = new Intent(this, VundetAktivitet.class);
             winActivity.putExtra("forsøg", Integer.toString(galgelogik.getAntalForkerteBogstaver()));
             startActivity(winActivity);
@@ -145,6 +158,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
+        // åbner dialog, hvis brugeren ønsker at forlade nuværende spil
         GameDialog dialog = new GameDialog();
         dialog.show(getSupportFragmentManager(), "game dialog");
     }

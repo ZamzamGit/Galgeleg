@@ -17,16 +17,18 @@ public class TabtAktivitet extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabt_aktivitet);
 
+        // opretter MediaPlayer med taberlyd
         MediaPlayer mp = MediaPlayer.create(TabtAktivitet.this, R.raw.lost);
 
         TextView ordDisplay = findViewById(R.id.ordDisplay);
         Intent i = getIntent();
 
+        // henter det korrekte ord
         String ord = i.getStringExtra("ord");
         ordDisplay.setText("Ordet var " + ord);
 
         mp.setVolume(2,2);
-        mp.start();
+        mp.start(); // spiller taberlyd
         Button spilIgen = findViewById(R.id.spilIgen);
         Button menu = findViewById(R.id.menuBtn);
         spilIgen.setOnClickListener(this);

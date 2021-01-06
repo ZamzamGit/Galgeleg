@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button highScoreBtn = findViewById(R.id.highScoreBtn);
         startBtn.setOnClickListener(this);
         highScoreBtn.setOnClickListener(this);
-
-
     }
 
     @Override
@@ -34,11 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         startActivity(i);
 
-        /*
-        Intent i = new Intent(this, GameActivity.class);
-        startActivity(i);
-
-         */
     }
     @Override
     public void onBackPressed() {

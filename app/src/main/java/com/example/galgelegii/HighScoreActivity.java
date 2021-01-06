@@ -23,6 +23,7 @@ public class HighScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
 
+        // Opretter og indsætter alle highscores i RecyclerView
         HighScoreData data = HighScoreData.getInstance();
         recyclerView = findViewById(R.id.highScoreRecView);
         recyclerView.setHasFixedSize(true);

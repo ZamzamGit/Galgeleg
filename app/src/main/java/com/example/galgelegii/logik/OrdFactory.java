@@ -23,11 +23,13 @@ public class OrdFactory {
     private OrdFactory() {
     }
 
+    // Singleton Pattern
     public static OrdFactory getInstance() {
         return instance;
     }
 
-    public Ord getOrd(String kategori) {
+    // vælger den ønskede kategori fra HashMap
+    public Ord getKategori(String kategori) {
         return ordKategori.get(kategori);
     }
 }

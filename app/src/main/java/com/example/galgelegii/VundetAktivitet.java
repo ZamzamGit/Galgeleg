@@ -16,15 +16,18 @@ public class VundetAktivitet extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vundet_aktivitet);
 
+        // Opretter MediaPlayer med vinderlyd
         MediaPlayer mp = MediaPlayer.create(VundetAktivitet.this, R.raw.win);
+
         TextView forsøgDisplay = findViewById(R.id.forsoegDisplay);
         Intent i = getIntent();
 
+        // henter antal forsøg i spillet
         String antal = i.getStringExtra("forsøg");
         forsøgDisplay.setText("Antal forsøg: " + antal);
 
         mp.setVolume(2,2);
-        mp.start();
+        mp.start(); // spiller vinderlyd
         Button spilIgen = findViewById(R.id.spilIgen2);
         Button menu = findViewById(R.id.menuBtn2);
         spilIgen.setOnClickListener(this);

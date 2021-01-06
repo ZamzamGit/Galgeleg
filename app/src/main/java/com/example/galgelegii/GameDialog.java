@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class GameDialog extends AppCompatDialogFragment {
 
+    /* Dialog hvor brugeren skal bekræfte om han/hun ønsker at forlade nuværende spil */
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
