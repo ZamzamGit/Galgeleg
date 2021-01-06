@@ -15,6 +15,7 @@ public class HighScoreData {
    private static HighScoreData instance = new HighScoreData();
 
     private HighScoreData() {
+
     }
 
     /* https://stackoverflow.com/questions/14981233/android-arraylist-of-custom-objects-save-to-sharedpreferences-serializable
@@ -27,7 +28,7 @@ public class HighScoreData {
         String json = sharedPref.getString("highscore",null); // henter json objekter
         Type type = new TypeToken<ArrayList<HighScore>>(){}.getType();
         ArrayList<HighScore> scores = gson.fromJson(json, type); // objekterne indsættes i arraylisten
-       //sharedPref.edit().clear().commit();
+        //sharedPref.edit().clear().commit();
         return scores;
     }
 
